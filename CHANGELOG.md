@@ -2,6 +2,11 @@
 
 All notable changes to the "text-work" extension will be documented in this file.
 
+## Unreleased
+
+### Changed
+- Updated GitHub Actions and the build runtime to Node.js 24.
+
 ## [0.0.15] – Automatic list renumbering
 
 ### Added

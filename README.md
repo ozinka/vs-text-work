@@ -7,11 +7,11 @@ Do you work with text a lot? Do you want to highlight even txt files? This exten
 ## Project documentation
 
 The project purpose, plain-language explanation of the highlighting rules, file
-map, and maintenance notes are available in Ukrainian:
+map, and maintenance notes are available in English:
 
-- [Project context](docs/PROJECT_CONTEXT.uk.md)
-- [Maintenance guide](docs/MAINTENANCE.uk.md)
-- [Technical review and improvement plan](docs/TECHNICAL_REVIEW.uk.md)
+- [Project context](docs/PROJECT_CONTEXT.md)
+- [Maintenance guide](docs/MAINTENANCE.md)
+- [Technical review and improvement plan](docs/TECHNICAL_REVIEW.md)
 
 ## Features
 
