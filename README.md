@@ -4,12 +4,20 @@ Do you work with text a lot? Do you want to highlight even txt files? This exten
 
 ![Example](imgs/example.webp)
 
+## Project documentation
+
+The project purpose, plain-language explanation of the highlighting rules, file
+map, and maintenance notes are available in Ukrainian:
+
+- [Project context](docs/PROJECT_CONTEXT.uk.md)
+- [Maintenance guide](docs/MAINTENANCE.uk.md)
+- [Technical review and improvement plan](docs/TECHNICAL_REVIEW.uk.md)
+
 ## Features
 
 ### 1. Custom Highlighting
 Provides rich syntax highlighting for `.txt` files, treating them as `text-work` language.
-- **Keywords**: `status`, `error`, `run`, `if`, `else`, `install`, `cp`, `mv`, `tf`, `npm`, `npx`, `python`, `terraform`, `echo`, `git`, `ssh` and much more.
-- **Colors**: `violet`, `red`, `green`, `yellow`, `blue`.
+- **Color words**: Add each custom word to the color group where you want to see it. For example, `prod` and `done` are green; `dev` is yellow; `qa` and `uat` are violet.
 - **UUIDs**: Automatically highlights UUIDs.
 - **Tags**: Highlights `@tags`.  
 - **Emails & URLs**: Highlights email addresses and web links (`http://`, `https://`).
@@ -23,6 +31,7 @@ Automatically manages lists when you press `Enter`:
 - **Roman Numerals**: `i.`, `ii.` (increments roman numerals)
 - **Indentation**: Maintains indentation and supports nested lists.
 - Pressing `Enter` on an empty list item clears the line.
+- **Renumbering**: Inserting a numeric item shifts subsequent items on the same level.
 
 ### 3. Section divider with Date/Time Insertion
 - **Alt+Enter**: Insert current date/time separator line *after* the cursor.

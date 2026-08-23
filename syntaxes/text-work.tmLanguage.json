@@ -3,228 +3,112 @@
   "name": "text-work",
   "scopeName": "source.text-work",
   "patterns": [
-    {
-      "include": "#colors"
-    },
-    {
-      "include": "#keywords"
-    },
-    {
-      "include": "#passwordPattern"
-    },
-    {
-      "include": "#comments"
-    },
-    {
-      "include": "#uuid"
-    },
-    {
-      "include": "#strings"
-    },
-    {
-      "include": "#numbers"
-    },
-    {
-      "include": "#emails"
-    },
-    {
-      "include": "#booleans"
-    },
-    {
-      "include": "#abbreviations"
-    },
-    {
-      "include": "#tags"
-    },
-    {
-      "include": "#punctuation"
-    },
-    {
-      "include": "#bullets"
-    },
-    {
-      "include": "#entity"
-    }
+    { "include": "#password" },
+    { "include": "#comments" },
+    { "include": "#quotedText" },
+    { "include": "#links" },
+    { "include": "#uuid" },
+    { "include": "#numbers" },
+    { "include": "#listMarkers" },
+    { "include": "#colorWords" },
+    { "include": "#tags" },
+    { "include": "#labels" },
+    { "include": "#abbreviations" },
+    { "include": "#punctuation" }
   ],
   "repository": {
+    "password": {
+      "patterns": [
+        { "name": "text-work.password", "match": "\\S+(?=\\s+@pass\\b)" }
+      ]
+    },
     "comments": {
       "patterns": [
+        { "name": "text-work.comment", "match": "\\s//.*$" },
+        { "name": "text-work.comment", "match": "\\s--.*$" }
+      ]
+    },
+    "quotedText": {
+      "patterns": [
         {
-          "name": "comment-gray",
-          "match": "\\s//.*$"
+          "name": "text-work.quoted-text",
+          "begin": "\"",
+          "end": "\"|(?=^--- ✄)",
+          "patterns": [
+            { "include": "#links" },
+            { "match": "\\\\.", "name": "text-work.quoted-text" }
+          ]
         },
         {
-          "name": "comment-gray",
-          "match": "\\s--.*$"
+          "name": "text-work.quoted-text",
+          "begin": "(?<![\\p{L}\\p{N}_])'",
+          "end": "'(?![\\p{L}\\p{N}_])|(?=^--- ✄)",
+          "patterns": [
+            { "include": "#links" },
+            { "match": "\\\\.", "name": "text-work.quoted-text" }
+          ]
         }
+      ]
+    },
+    "links": {
+      "patterns": [
+        { "name": "text-work.link", "match": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*\\.[A-Za-z]{2,}\\b" },
+        { "name": "text-work.link", "match": "\\bhttps?://[\\w\\-.]+(?:/[\\w\\-./?%&=]*)?\\b" }
       ]
     },
     "uuid": {
       "patterns": [
-        {
-          "name": "uuid-cyan",
-          "match": "\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\\b"
-        }
-      ]
-    },
-    "emails": {
-      "patterns": [
-        {
-          "name": "link-blue",
-          "match": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*\\.[A-Za-z]{2,}\\b"
-        },
-        {
-          "name": "link-blue",
-          "match": "\\bhttps?://[\\w\\-\\.]+(?:/[\\w\\-./?%&=]*)?\\b"
-        }
-      ]
-    },
-    "passwordPattern": {
-      "patterns": [
-        {
-          "name": "password-red",
-          "match": "\\S+(?=\\s+@pass\\b)"
-        }
-      ]
-    },
-    "strings": {
-      "patterns": [
-        {
-          "name": "string-orange",
-          "begin": "\"",
-          "end": "\"|(?=^--- ✄)",
-          "patterns": [
-            {
-              "include": "#emails"
-            },
-            {
-              "name": "string-orange",
-              "match": "\\\\."
-            }
-          ]
-        },
-        {
-          "name": "string-orange",
-          "begin": "(?<!\\w)'(?!\\w)|(?<!\\w)'(?=\\s)",
-          "end": "'(?!\\w)|(?=^--- ✄)",
-          "patterns": [
-            {
-              "include": "#emails"
-            },
-            {
-              "name": "string-orange",
-              "match": "\\\\."
-            }
-          ]
-        }
+        { "name": "text-work.uuid", "match": "\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\\b" }
       ]
     },
     "numbers": {
       "patterns": [
         {
           "match": "(\\$|€)?\\b([0-9]+(\\.[0-9]+)?)(k)?\\b",
-          "captures": {
-            "2": {
-              "name": "number-cyan"
-            }
-          }
+          "captures": { "2": { "name": "text-work.number" } }
         }
       ]
     },
-    "booleans": {
+    "listMarkers": {
       "patterns": [
         {
-          "name": "green",
-          "match": "(?i)\\b(true|ok|good|done|passed|eligible|yes|green|prod|production)\\b"
+          "match": "^(\\s*)([\\*\\-•▪▫◦‣⁃]\\s|\\d+\\.\\s|[a-zA-Z]+\\.\\s|\\.\\s)",
+          "captures": { "2": { "name": "text-work.list-marker" } }
         }
       ]
     },
-    "colors": {
+    "colorWords": {
       "patterns": [
-        {
-          "name": "violet",
-          "match": "(?i)\\b(violet|purple|monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sunday)\\b"
-        },
-        {
-          "name": "red",
-          "match": "(?i)\\b(red|sun|sat)\\b"
-        },
-        {
-          "name": "red",
-          "match": "(?i)\\b(false|fail|failed|error|no|not\\s+eligible)\\b"
-        },
-        {
-          "name": "blue",
-          "match": "(?i)\\b(blue|Febroray|feb|March|mar|April|apr|May|may|June|jun|July|jul|August|aug|September|sep|October|oct|November|nov|December|dec)\\b"
-        },
-        {
-          "name": "magenta",
-          "match": "(?i)\\b(status|cp|mv|tf|npm|npx|python\\d*|terraform|echo|git|ssh|qa|uat)\\b"
-        },
-        {
-          "name": "magenta",
-          "match": "(?i)\\b(if|else|run|install|pull|push)\\b"
-        },
-        {
-          "name": "string-orange",
-          "match": "[\\!\\$\\€\\?]"
-        }
-      ]
-    },
-    "abbreviations": {
-      "patterns": [
-        {
-          "name": "abbreviation-purple",
-          "match": "\\b(?!(?i:done|prod)\\b)([A-Z\\d]{2,}|[\\w.]*_[\\w.]*)\\b"
-        }
+        { "name": "text-work.green-words", "match": "(?i)\\b(green|true|ok|good|done|passed|eligible|yes|prod|production)\\b" },
+        { "name": "text-work.red-words", "match": "(?i)\\b(red|false|fail|failed|error|no|not\\s+eligible|sun|sat)\\b" },
+        { "name": "text-work.yellow-words", "match": "(?i)\\b(yellow|dev)\\b" },
+        { "name": "text-work.orange-words", "match": "(?i)\\b(orange)\\b" },
+        { "name": "text-work.blue-words", "match": "(?i)\\b(blue|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)\\b" },
+        { "name": "text-work.violet-words", "match": "(?i)\\b(violet|purple|qa|uat|monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sunday)\\b" },
+        { "name": "text-work.magenta-words", "match": "(?i)\\b(status|cp|mv|tf|npm|npx|python\\d*|terraform|echo|git|ssh|if|else|run|install|pull|push)\\b" }
       ]
     },
     "tags": {
       "patterns": [
-        {
-          "name": "yellow",
-          "match": "\\s@[A-Za-z0-9_\\-]+"
-        },
-        {
-          "name": "yellow",
-          "match": "(?i)\\b(dev|yellow)\\b"
-        },
-        {
-          "name": "yellow",
-          "match": "\\bis[A-Z][a-zA-Z]*\\b"
-        }
+        { "name": "text-work.tag", "match": "(?<![A-Za-z0-9_])@[A-Za-z0-9_-]+" },
+        { "name": "text-work.yellow-words", "match": "(?i)\\bis[A-Z][a-zA-Z]*\\b" }
+      ]
+    },
+    "labels": {
+      "patterns": [
+        { "name": "text-work.label", "match": "^\\s*[^:\\s][^:]*(?=:)" },
+        { "name": "text-work.label", "match": "(?i)\\bwarning\\b" }
+      ]
+    },
+    "abbreviations": {
+      "patterns": [
+        { "name": "text-work.abbreviation", "match": "\\b(?!(?i:done|prod)\\b)([A-Z\\d]{2,}|[\\w.]*_[\\w.]*)\\b" }
       ]
     },
     "punctuation": {
       "patterns": [
-        {
-          "name": "gray",
-          "match": "[-=\\|,.:;(){}\\[\\]\"']"
-        }
-      ]
-    },
-    "bullets": {
-      "patterns": [
-        {
-          "match": "^(\\s*)([\\*\\-•▪▫◦‣⁃]\\s|\\d+\\.\\s|[a-zA-Z]\\.\\s|[ivxlcdmIVXLCDM]+\\.\\s|\\.\\s)",
-          "captures": {
-            "2": {
-              "name": "blue"
-            }
-          }
-        }
-      ]
-    },
-    "entity": {
-      "patterns": [
-        {
-          "name": "label-brown",
-          "match": "^\\s*(?!(?i:done|prod)\\b)[^:\\s][^:]*(?=:)"
-        },
-        {
-          "name": "label-brown",
-          "match": "(?i)\\b(warning)\\b"
-        }
+        { "name": "text-work.punctuation", "match": "[-=\\|,.:;(){}\\[\\]\"']" },
+        { "name": "text-work.symbol", "match": "[!$€?]" }
       ]
     }
   }
