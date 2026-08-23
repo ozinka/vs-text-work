@@ -2,6 +2,26 @@
 
 All notable changes to the "text-work" extension will be documented in this file.
 
+## [0.0.15] – Automatic list renumbering
+
+### Added
+- Inserted numeric list items now renumber subsequent items on the same level.
+
+## [0.0.14] – QA and UAT color update
+
+### Changed
+- Moved QA and UAT to the violet word group.
+
+## [0.0.13] – Simpler color-word rules and list improvements
+
+### Changed
+- Reorganized manually maintained highlighting words into clear color groups.
+- Improved single-quote handling so apostrophes inside words do not break quoted text.
+- Simplified and hardened automatic list continuation, indentation, and outdent behavior.
+
+### Added
+- Added automated tests for list logic.
+
 ## [0.0.12] – Add support for browser mode.
 
 ### Added

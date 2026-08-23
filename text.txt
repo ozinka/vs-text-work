@@ -1,0 +1,159 @@
+--- ✄ --------- 2026.08.23 11:30 -------------------
+TEXT WORK — syntax highlighting test
+
+Color words:
+green prod production true ok good done passed eligible yes
+red false fail failed error no not eligible sun sat
+yellow dev
+orange
+blue February feb March mar April apr May may June jun July jul August aug September sep October oct November nov December dec
+violet purple qa uat Monday mon Tuesday tue Wednesday wed Thursday thu Friday fri Saturday Sunday
+magenta status cp mv tf npm npx python python3 terraform echo git ssh if else run install pull push
+
+Labels and tags:
+Project: Text Work
+Environment: dev → qa → uat → prod
+Owner: @vitaliy
+Task: @syntax-test
+Warning: check the highlighted words
+isReady isEnabled isProduction
+Quoted text and apostrophes:
+"A double-quoted line with prod, QA, https://example.com and user@example.com."
+'A single-quoted line with done and @tag.'
+don't break this apostrophe
+'п'ять українських символів теж не повинні розривати текст'
+"don't remains one quoted fragment"
+
+Automatic patterns:
+Numbers: 0 42 7.23 20k $100 €12.50
+UUID: 550e8400-e29b-41d4-a716-446655440000
+Email: prefvc_esQA2@yopmail.com
+Links: https://domonet.ua/path?query=value and http://example.org
+Abbreviations: API AWS SCTASK1215674 SN_Global_Support
+Punctuation: ! $ € ? (test) [test] {test} = | ; :
+Password: mySecretPassword @pass
+
+Comments:
+ // This should be an italic gray comment: prod fail 123
+ -- Another comment with @todo and https://example.com
+
+List continuation and indentation:
+* Start with an asterisk, then press Enter
+- Continue this dash list
+• Continue this bullet list
+1. First numbered item
+2. Second numbered item
+3. Insert a line after the first item: this and the next item should shift
+    a. First nested letter item
+    b. Second nested letter item
+        i. First nested Roman item
+        ii. Second nested Roman item
+z. Letter rollover test
+iv. Roman numeral test
+
+Recreated example from example.png:
+green
+some text
+******** @pass
+
++-----+------+------+------+------+------+------+------+
+| N   | Mon  | Tue  | Wed  | Thu  | Fri  | Sat  | Sun  |
++-----+------+------+------+------+------+------+------+
+| 0   | 7.23 | 3.45 | 9.67 | 1.89 | 5.12 | 2.34 | 8.56 |
+| 1   | 4.78 | 6.91 | 2.13 | 8.45 | 3.67 | 9.20 | 1.54 |
+| 2   | 9.32 | 1.76 | 5.49 | 7.81 | 4.05 | 6.28 | 3.93 |
+| 3   | 1.92 | 8.17 | 4.52 | 3.14 | 6.23 | 7.73 | 7.26 |
++-----+------+------+------+------+------+------+------+
+
+Job is done
+
+Tasks for tomorrow:
+1. Finish the report — fail
+2. Attend the team meeting — done
+3. Visit the client site warning
+
+
+--- ✄ --------- 2025.11.30 23:18 -------------------
+Exception in thread "main" java.lang.NullPointerException
+    at java.io.PrintWriter.write(PrintWriter.java:473)
+    at java.io.PrintWriter.print(PrintWriter.java:617)
+    at TestNPE.dump(TestNPE.java:5)
+--- ✄ --------- 2025.11.30 23:18 -------------------
+
+--- Existing test.txt content below ------------------------------------------
+
+--- ✄ --------- 2025.12.29 18:49 -------------------
+SCTASK1215674
+prefvc_esQA2@yopmail.com
+alt.g7-cjlhz2f@yopmail.com
+https://domonet.ua
+
+--- ✄ --------- 2025.12.29 18:49 -------------------
+--- ✄ --------- 2026.08.23 11:23 -------------------
+--- ✄ --------- 2025.10.14 18:42 ----------------
+domonet.ua
+ozi@gmail.com
+1. real IP address
+2. 750
+1 13
+34. asdf
+    a. asdf
+    a. asdfsdf
+
+• asdf
+• asdf
+. asdf
+asdf @pass
+--- ✄ --------- 2025.11.23 18:39 -------------------
+"bullets": {
+      "patterns": [
+        {
+          "match": "^(\\s*)([\\*\\-•▪▫◦‣⁃]\\s|\\d+\\.\\s|[a-zA-Z]\\.\\s|[ivxlcdmIVXLCDM]+\\.\\s|\\.\\s)",
+          "captures": {
+            "2": {
+              "name": "markup.list.bullet.ozi-work"
+            }
+          }
+        }
+      ]
+    },
+--- ✄ --------- 2025.10.13 10:56 ----------------
+shoppinglist
+--- ✄ --------- 2025.10.10 11:35 ----------------
+Domashka:
+IP:78.27.176.156
+GW:78.27.176.1
+Маска:255.255.255.0
+DNS1:91.203.51.254
+DNS2:94.45.45.45
+--- ✄ --------- 2025.10.27 14:29 -------------------
+
+if "test" while return "ok"
+11225ds18313 @pass
+
+// comment
+red
+123 ok fail GREEN violet @todo
+STATUS: passed
+violet: warning
+fail red
+yellow
+
+--- ✄ --------- 2025.10.17 14:08 -------------------
+
+--- ✄ --------- 2025.10.17 17:49 -------------------
+
+--- ✄ --------- 2025.10.17 17:49 -------------------
+
+--- ✄ --------- 2025.10.17 15:14 -------------------
+--- ✄ --------- 2025.10.17 14:07 -------------------
+
+--- ✄ --------- 2025.10.16 16:47 ----------------
+
+--- ✄ --------- 2025.10.16 14:28 ----------------
+
+--- ✄ --------- 2025.10.20 19:04 -------------------
+
+--- ✄ --------- 2025.10.20 19:07 -------------------
+
+--- ✄ --------- 2025.10.20 19:07 -------------------
